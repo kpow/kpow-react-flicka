@@ -4,7 +4,8 @@ import apiKey from './config'
 import {
   BrowserRouter as Router, 
   Route, 
-  Switch
+  Switch,
+  withRouter
 } from 'react-router-dom'
 
 
@@ -12,12 +13,13 @@ import SearchForm from './components/SearchForm'
 import MainNav from './components/MainNav'
 import Home from './components/Home'
 import PageNotFound from './components/PageNotFound'
-import NotFound from './components/NotFound'
 import PhotoList from './components/PhotoList'
 import MainHeader from './components/MainHeader'
 
 
 import './App.scss';
+
+
 
 class App extends Component {
 
@@ -67,7 +69,7 @@ class App extends Component {
       <Router>
         <div className="container">
           
-          <SearchForm />      
+        <SearchForm handleSearch={this.performSearch}/>    
 
           <MainNav />
 
