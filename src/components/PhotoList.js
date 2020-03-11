@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import Photo from './Photo'
+import NotFound from './NotFound'
 
-class PhotoList extends Component {
-    
-  render(){
-    return(
-      <div className="photo-container">
-        <h2>Results</h2>
-        <ul>
-          <Photo />
-          <Photo />
-          <Photo />
-          <Photo />
-        </ul>
-      </div>
-    )
-  }
+function PhotoList({query, data}) {
+
+  return(
+    <div className="photo-container">
+      <h3 style={{fontSize:'24px'}}>Results for: {query}</h3>
+      <ul>
+
+        { data.length > 0 
+          ? data.map((image)=><Photo data={image} />) 
+          : <NotFound />
+        }
+      
+      </ul>
+    </div>
+  )
 
 }
 
