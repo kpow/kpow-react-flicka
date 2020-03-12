@@ -1,19 +1,21 @@
 import React from  'react'
 import {NavLink} from 'react-router-dom'
 
-function MainNav(){
+function TagList({data}){
+    const tags = data.map((item,index)=>(
+                <li key={`list-${index}`}>
+                    <NavLink key={`nav-${index}`} to={`/${item}`}>
+                        {item}
+                    </NavLink>
+                </li>))
+    return tags
+}
+
+function MainNav({data}){
     return(
         <nav className="main-nav">
             <ul>
-                <li>
-                    <NavLink to="/squid">Squid</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/voodoo">VooDoo</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/mars">Mars</NavLink>
-                </li>
+                <TagList data={data} />
             </ul>
         </nav>
     )

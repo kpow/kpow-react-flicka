@@ -16,8 +16,7 @@ function MainHeader(){
                 <h4>sucking images out of the interwebz</h4>
             </div>
         </header>
-
-       )
+        )
 }
 
 export default MainHeader

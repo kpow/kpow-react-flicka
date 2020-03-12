@@ -1,11 +1,13 @@
+// load up our libraries etc
 import React, {Component} from 'react';
 import axios from 'axios';
 import {
   BrowserRouter as Router, 
   Route, 
   Switch,
+  Redirect,
 } from 'react-router-dom'
-
+// load up our comp
 import SearchForm from './components/SearchForm'
 import MainNav from './components/MainNav'
 import Home from './components/Home'
@@ -14,7 +16,7 @@ import PhotoList from './components/PhotoList'
 import MainHeader from './components/MainHeader'
 import ContentHeader from './components/ContentHeader'
 import Loading from './components/Loading'
-
+// other stuff
 import apiKey from './config'
 import './App.scss';
 
@@ -24,23 +26,31 @@ class App extends Component {
     super();
     this.state = {
       images: [],
-      query: ''
+      query: '',
+      loading:true
     };
   }
-  
+
+  // these could be abstracted some where else but its just easy right here for now
   tags = ['skulls','squid','voodoo','mars']
-  headlines = ['skulls to rattle them bonez',
-               'It\'s Squidzzz baby.',
-               'The Voodoozz you dozz',
-               'To Marzzz and abooovez' ]
+  tagHeadlines = ['skullzi to rattle them bonez',
+                  'It\'s Squidzzz baby.',
+                  'The Voodoozz you dozz',
+                  'To Marzzz and abooovez' ]
 
   componentDidMount(){
+    // setup the data
     this.tags.forEach((search)=>{ 
       this.performSearch(search,"load") 
     })
   }
 
+  toggleLoading(){
+    this.setState({ loading:true });
+  }
+
   processData(data){
+    // this build an object for displaying the flicker data
     const processedData = data.map((item)=>{
       const thumbUrl = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_q.jpg`
       const desc = item.title
@@ -53,27 +63,26 @@ class App extends Component {
 
   performSearch = (query, context) => {
     const queryUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
-    // this is weird conditional because if i dont do this it fires continous
-    if(this.state.query !== query){
-      axios.get(queryUrl)
-        .then(response => {
-          if(!context){
+    axios.get(queryUrl)
+      .then(response => {
+        // if no context its search and updates search images
+        if(!context){
             this.setState(prevState =>{
-              return {
-                images: this.processData(response.data.photos.photo),
-                query:query
-            }});
-          }else if(context === "load"){
-              this.setState(prevState =>{
-                return {
-                  [query] : this.processData(response.data.photos.photo)
-              }});
-          }
-        })
-        .catch(error => {
-          console.log('Error fetching and parsing data', error);
-      });
-    }
+              return { images: this.processData(response.data.photos.photo), 
+                       query:query,
+                       loading:false
+                      }
+            });
+        // if it's loading intial tag data for later    
+        }else if(context === "load"){
+            this.setState(prevState =>{
+              return {[query] : this.processData(response.data.photos.photo)}
+            });
+        }
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
   }
 
   render(){
@@ -81,48 +90,52 @@ class App extends Component {
       <Router>
         <MainHeader />
         <div className="container">
-
+          
           <Route path="/" render={routeProps => (
               <SearchForm {...routeProps} handleSearch={this.performSearch}/>
           )} /> 
 
-          <MainNav />
+          <MainNav data={this.tags}/>
 
           <Switch>
                 <Route exact path="/"  render={()=>{
                   if(this.state[this.tags[0]]){
                     return( <> <Home />
                             <PhotoList data={this.state[this.tags[0]]} query={this.tags[0]} /> </>)
-                    }else{ return <Loading />  }
+                    }else{ 
+                      return <Loading /> 
+                    }
                 }} />
+                
+                {/* hacky route for gh pages hosting yeah i know there is abetter way probably :) */}
+                <Route path="/react-gallery" render={()=>{
+                  return <Redirect to="/" />
+                }} />
+                
+                {/* loop through tags to create routes */}
+                { 
+                  this.tags.map((tag, index)=>{
+                    return(
+                      <Route exact path={`/${tag}`} key={`${tag}-rooty-${index}`} render={()=>{
+                        if(this.state[tag]){
+                          return( <> <ContentHeader title={this.tagHeadlines[index]} key={`${tag}-${index}`} />
+                                  <PhotoList data={this.state[tag]} query={null} key={`${index}-${tag}`} /> </>)
+                          }else{ 
+                            return <Loading />  
+                          }
+                      }} />  
+                    )
+                  })
+                }
 
-                <Route exact path={`/${this.tags[1]}`} render={()=>{
-                  if(this.state[this.tags[1]]){
-                    return( <> <ContentHeader title={this.headlines[1]} />
-                            <PhotoList data={this.state[this.tags[1]]} query={null} /> </>)
-                    }else{ return <Loading />  }
-                }} />
-
-                <Route exact path={`/${this.tags[2]}`}  render={()=>{
-                  if(this.state[this.tags[2]]){
-                    return( <> <ContentHeader title={this.headlines[2]} />
-                            <PhotoList data={this.state[this.tags[2]]} query={null} /> </>)
-                    }else{ return <Loading />  }
-                }} />
-
-               <Route exact path={`/${this.tags[3]}`}  render={()=>{
-                  if(this.state[this.tags[3]]){
-                    return( <> <ContentHeader title={this.headlines[3]} />
-                            <PhotoList data={this.state[this.tags[3]]} query={null} /> </>)
-                    }else{ return <Loading />  }
-                }} />
-
-                <Route path="/search/:query" render={({match})=>{
-                    this.performSearch(match.params.query)
-                    if(this.state.images){
-                      return <PhotoList data={this.state.images} query={this.state.query} />
-                    }else{ return <Loading /> }
-                }} />
+                <Route path="/search/:query" render={({match})=>(
+                    <PhotoList 
+                      data={this.state.images} 
+                      query={match.params.query} 
+                      search={this.performSearch} 
+                      loading = {this.state.loading}
+                    />
+                 )} />
 
                 <Route component={PageNotFound} /> 
           </Switch>

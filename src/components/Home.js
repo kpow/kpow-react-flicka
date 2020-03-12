@@ -5,7 +5,7 @@ function Home(){
       <div className="home-content">
         <h2>It's up to you . . . .</h2>
        
-         <p>What does the wonderful world of flicker have to share :)</p>
+         <p>What does the wonderful world of flickerz have to share :)</p>
       </div>
     )
 }
