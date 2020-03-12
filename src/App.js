@@ -43,6 +43,7 @@ class App extends Component {
     return processedData
   }
   
+  
   performSearch = (query = 'skulls') => {
     const queryUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
     // this is weird conditional because if i dont do this it fires continous
