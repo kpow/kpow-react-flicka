@@ -13,11 +13,11 @@ function PhotoList({query, data, search, loading, setOverlay, toggleOverlay}) {
     if(!loading){
         if(data.length > 0){ 
           return data.map( (image)=><Photo 
-                                data={image} 
-                                key={image.id} 
-                                setOverlay={setOverlay}
-                                toggleOverlay={toggleOverlay}
-                              />) 
+                                      data={image} 
+                                      key={image.id} 
+                                      setOverlay={setOverlay}
+                                      toggleOverlay={toggleOverlay}
+                                    />) 
         }else{
           return <NotFound />
         }

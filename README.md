@@ -1,3 +1,19 @@
+# Kpow=>pix
+
+This is a react SPA to curate some content from flicker and allow you to do you own searches
+
+I'm going for exceeds :)
+
+## features:
+- dynamic inital tags and navigation
+- 404 and no results states
+- loading states for search and pages incase a user come directly to it.
+- lightbox for images
+- updated CSS and markup
+- rr4 for routing
+- axios for data fetching
+- helmet for head management
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
