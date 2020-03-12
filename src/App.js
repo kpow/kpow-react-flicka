@@ -35,8 +35,8 @@ class App extends Component {
     };
   }
 
-  // these could be abstracted some where else but its just easy right here for now
-  tags = ['skulls','squid','voodoo','mars']
+  // these could be abstracted somewhere else but its just easy right here for now
+  tags = ['skulls','squid','star citizen','graffitti','wingsuit']
   tagHeadlines = ['skullzi to rattle them bonez',
                   'It\'s Squidzzz baby.',
                   'The Voodoozz you dozz',
@@ -95,11 +95,9 @@ class App extends Component {
             this.setState(prevState =>{
               return {
                   [query] : this.processData(response.data.photos.photo),
-                  home:[
-                      ...prevState.home, 
+                  home:[ ...prevState.home, 
                       this.processData(response.data.photos.photo)[Math.floor(Math.random() * 12)],
-                      this.processData(response.data.photos.photo)[Math.floor(Math.random() * 12)+13]
-                    ]
+                      this.processData(response.data.photos.photo)[Math.floor(Math.random() * 12)+13] ]
                 }
             });
         }
@@ -170,12 +168,12 @@ class App extends Component {
                     <><Helmet title={`searched for: ${match.params.query}`} />
                       <PhotoList 
                         data={this.state.images} 
+                        loading = {this.state.loading}
                         query={match.params.query} 
                         search={this.performSearch} 
-                        loading = {this.state.loading}
                         setOverlay={this.setOverlayImage}
                         toggleOverlay={this.toggleOverlay}
-                      /> </>
+                      /></>
                  )} />
 
                 <Route component={PageNotFound} /> 
