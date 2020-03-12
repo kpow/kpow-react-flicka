@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Photo from './Photo'
 import NotFound from './NotFound'
 
@@ -10,7 +10,7 @@ function PhotoList({query, data}) {
       <ul>
 
         { data.length > 0 
-          ? data.map((image)=><Photo data={image} />) 
+          ? data.map((image)=><Photo data={image} key={image.id}/>) 
           : <NotFound />
         }
       

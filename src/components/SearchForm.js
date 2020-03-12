@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 
-export default class SearchForm extends Component {
-  
-  state = {
-    searchText: ''
-  }
-  
-  onSearchChange = e => {
-    this.setState({ searchText: e.target.value });
-  }
+class SearchForm extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
     this.props.handleSearch(this.query.value)
-    // need to move this to router history object
-    document.location = `/search/${this.query.value}`
+    this.props.history.push(`/search/${this.query.value}`)
     e.currentTarget.reset();
   }
   
@@ -22,7 +13,6 @@ export default class SearchForm extends Component {
     return (
       <form className="search-form" onSubmit={this.handleSubmit}>
         <input type="search" 
-               onChange={this.onSearchChange}
                name="search" 
                ref={(input) => this.query = input}
                placeholder="Search..." />
@@ -33,8 +23,9 @@ export default class SearchForm extends Component {
           </svg>
         </button>
       </form>
-
-
     );
   }
+  
 }
+
+export default SearchForm

@@ -6,13 +6,13 @@ function MainNav(){
         <nav className="main-nav">
             <ul>
                 <li>
-                    <NavLink to="/search/squid">Squid</NavLink>
+                    <NavLink to="/squids">Squids</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/search/voodoo">VooDoo</NavLink>
+                    <NavLink to="/voodoo">VooDoo</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/search/mars">Mars</NavLink>
+                    <NavLink to="/mars">Mars</NavLink>
                 </li>
             </ul>
         </nav>
@@ -20,7 +20,3 @@ function MainNav(){
 }
 
 export default MainNav
-
-/*
-
-*/
