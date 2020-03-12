@@ -5,7 +5,7 @@ import Loading from './Loading'
 
 function PhotoList({query, data, search, loading, setOverlay, toggleOverlay}) {
 
-  if(data.length<1){
+  if(data.length<1 && loading){
     search(query)
   }
 

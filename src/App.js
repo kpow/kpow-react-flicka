@@ -39,8 +39,10 @@ class App extends Component {
   tags = ['skulls','squid','star citizen','graffitti','wingsuit']
   tagHeadlines = ['skullzi to rattle them bonez',
                   'It\'s Squidzzz baby.',
-                  'The Voodoozz you dozz',
-                  'To Marzzz and abooovez' ]
+                  'Spacey operaz on-a-Toastieez',
+                  'pretty pictuzes on pretier streeetzz',
+                  'wheeeeeeeeeeeeeeeeeeeee !'
+                 ]
 
   componentDidMount(){
     // setup the data
@@ -119,7 +121,10 @@ class App extends Component {
         <div className="container">
           
           <Route path="/" render={routeProps => (
-              <SearchForm {...routeProps} handleSearch={this.performSearch} toggleLoading={this.toggleLoading}/>
+              <SearchForm {...routeProps} 
+                          handleSearch={this.performSearch} 
+                          toggleLoading={this.toggleLoading}
+                />
           )} /> 
 
           <MainNav data={this.tags}/>
