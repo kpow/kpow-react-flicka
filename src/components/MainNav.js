@@ -6,7 +6,7 @@ function MainNav(){
         <nav className="main-nav">
             <ul>
                 <li>
-                    <NavLink to="/squids">Squids</NavLink>
+                    <NavLink to="/squid">Squid</NavLink>
                 </li>
                 <li>
                     <NavLink to="/voodoo">VooDoo</NavLink>

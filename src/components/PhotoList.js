@@ -6,7 +6,9 @@ function PhotoList({query, data}) {
 
   return(
     <div className="photo-container">
-      <h3 style={{fontSize:'24px'}}>Results for: {query}</h3>
+      { query && 
+        <h3 style={{fontSize:'24px'}}>Results for: {query}</h3>
+      }
       <ul>
 
         { data.length > 0 
