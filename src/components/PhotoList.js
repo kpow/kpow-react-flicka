@@ -3,7 +3,7 @@ import Photo from './Photo'
 import NotFound from './NotFound'
 import Loading from './Loading'
 
-function PhotoList({query, data, search, loading}) {
+function PhotoList({query, data, search, loading, setOverlay, toggleOverlay}) {
 
   if(data.length<1){
     search(query)
@@ -12,7 +12,12 @@ function PhotoList({query, data, search, loading}) {
   const photoDisplay = (data) =>{ 
     if(!loading){
         if(data.length > 0){ 
-          return data.map((image)=><Photo data={image} key={image.id}/>) 
+          return data.map( (image)=><Photo 
+                                data={image} 
+                                key={image.id} 
+                                setOverlay={setOverlay}
+                                toggleOverlay={toggleOverlay}
+                              />) 
         }else{
           return <NotFound />
         }
@@ -21,7 +26,7 @@ function PhotoList({query, data, search, loading}) {
 
   const photoHeader = (query) =>{
     if(query && !loading){
-      return <h3 style={{fontSize:'24px'}}>Results for: {query}</h3>
+      return <strong style={{fontSize:'18px'}}>Results for: {query}</strong>
     }else if(loading){
       return <Loading />
     } 

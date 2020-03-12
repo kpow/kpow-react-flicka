@@ -1,9 +1,15 @@
 import React from 'react'
 
-function Photo(props){
+function Photo({toggleOverlay, setOverlay, data}){
+
+    const handleClick = (e) =>{
+        toggleOverlay();
+        setOverlay(data.fullUrl)
+    }
+
     return(
         <li>
-            <img src={props.data.thumbUrl} alt={props.data.desc} />
+            <img onClick={handleClick} src={data.thumbUrl} alt={data.desc} />
         </li>
     )
 }
