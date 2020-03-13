@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kpow-react-flicka/precache-manifest.94320752e6c70251ad2a8ec1be7a959f.js"
+  "/kpow-react-flicka/precache-manifest.29bd6bc9e63020bee0a3b23712b66d90.js"
 );
 
 self.addEventListener('message', (event) => {

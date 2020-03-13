@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f372811b5987b1e85cc735756ae50018",
+    "revision": "0396d34ae87ae5c478c58163e0088097",
     "url": "/kpow-react-flicka/index.html"
   },
   {
-    "revision": "6b728127bffab2ab6e91",
-    "url": "/kpow-react-flicka/static/css/main.874b8bc1.chunk.css"
+    "revision": "b57a8f9fddf1a16b2640",
+    "url": "/kpow-react-flicka/static/css/main.05dfe4b6.chunk.css"
   },
   {
     "revision": "4caf34da42fc552f1659",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kpow-react-flicka/static/js/2.18e8b0a4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6b728127bffab2ab6e91",
-    "url": "/kpow-react-flicka/static/js/main.50756a0e.chunk.js"
+    "revision": "b57a8f9fddf1a16b2640",
+    "url": "/kpow-react-flicka/static/js/main.71e24701.chunk.js"
   },
   {
     "revision": "34e0004e902d8a65982d",

@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/kpow-react-flicka/static/css/main.874b8bc1.chunk.css",
-    "main.js": "/kpow-react-flicka/static/js/main.50756a0e.chunk.js",
-    "main.js.map": "/kpow-react-flicka/static/js/main.50756a0e.chunk.js.map",
+    "main.css": "/kpow-react-flicka/static/css/main.05dfe4b6.chunk.css",
+    "main.js": "/kpow-react-flicka/static/js/main.71e24701.chunk.js",
+    "main.js.map": "/kpow-react-flicka/static/js/main.71e24701.chunk.js.map",
     "runtime-main.js": "/kpow-react-flicka/static/js/runtime-main.00103144.js",
     "runtime-main.js.map": "/kpow-react-flicka/static/js/runtime-main.00103144.js.map",
     "static/js/2.18e8b0a4.chunk.js": "/kpow-react-flicka/static/js/2.18e8b0a4.chunk.js",
     "static/js/2.18e8b0a4.chunk.js.map": "/kpow-react-flicka/static/js/2.18e8b0a4.chunk.js.map",
     "index.html": "/kpow-react-flicka/index.html",
-    "precache-manifest.94320752e6c70251ad2a8ec1be7a959f.js": "/kpow-react-flicka/precache-manifest.94320752e6c70251ad2a8ec1be7a959f.js",
+    "precache-manifest.29bd6bc9e63020bee0a3b23712b66d90.js": "/kpow-react-flicka/precache-manifest.29bd6bc9e63020bee0a3b23712b66d90.js",
     "service-worker.js": "/kpow-react-flicka/service-worker.js",
-    "static/css/main.874b8bc1.chunk.css.map": "/kpow-react-flicka/static/css/main.874b8bc1.chunk.css.map",
+    "static/css/main.05dfe4b6.chunk.css.map": "/kpow-react-flicka/static/css/main.05dfe4b6.chunk.css.map",
     "static/js/2.18e8b0a4.chunk.js.LICENSE.txt": "/kpow-react-flicka/static/js/2.18e8b0a4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.00103144.js",
     "static/js/2.18e8b0a4.chunk.js",
-    "static/css/main.874b8bc1.chunk.css",
-    "static/js/main.50756a0e.chunk.js"
+    "static/css/main.05dfe4b6.chunk.css",
+    "static/js/main.71e24701.chunk.js"
   ]
 }
