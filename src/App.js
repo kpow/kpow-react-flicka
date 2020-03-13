@@ -111,7 +111,7 @@ class App extends Component {
 
   render(){
     return (
-      <Router basename="/react-gallery">
+      <Router basename="/kpow-react-flicka">
         <MainHeader />
         <Overlay 
             overlayImage={this.state.overlayImage} 
