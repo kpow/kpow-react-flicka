@@ -2,6 +2,8 @@
 
 This is a react.js SPA to curate some content from flicker and allow you to do you own searches
 
+https://kpow.github.io/kpow-react-flicka/
+
 ## features:
 - dynamic inital tags and navigation
 - 404 and no results states
